@@ -6,31 +6,49 @@
     <title>Welcome to Firebase Hosting</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <!-- update the version number as needed -->
+    <link rel="stylesheet" href="./main.css">
     <script defer src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <!--<script defer src="/__/firebase/init.js"></script>-->
+    <style>
+
+    </style>
   </head>
   <body>
     <!-- Creating APP shell -->
-    <nav class="navbar sticky-top navbar-toggleable-md navbar-light bg-faded">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="float-right navbar-brand" href="#">Navbar</a>
+    <!--<nav class="navbar sticky-top navbar-toggleable-md navbar-light bg-faded">-->
+      <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--<span class="navbar-toggler-icon"></span>-->
+      <!--</button>-->
+      <!--<a class="float-right navbar-brand" href="#">Navbar</a>-->
 
-      <div class="float-left collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto"></ul>
-        <button class="float-left btn btn-primary" style="margin-right: 20px" onclick="loginWithGoogle()">Login With Google</button>
-        <button class="float-left btn btn-primary" onclick="logoutWithGoogle()">Logout</button>
+      <!--<div class="float-left collapse navbar-collapse" id="navbarSupportedContent">-->
+        <!--<ul class="navbar-nav mr-auto"></ul>-->
+        <!--<button class="float-left btn btn-primary" style="margin-right: 20px" onclick="loginWithGoogle()">Login With Google</button>-->
+        <!--<button class="float-left btn btn-primary" onclick="logoutWithGoogle()">Logout</button>-->
+      <!--</div>-->
+    <!--</nav>-->
+
+    <div class="container-fluid">
+      <div class="logo-container">
+        <div class = "logo">
+
+        </div>
+        <div class="text">MindMaps</div>
       </div>
-    </nav>
+      <div class="auth-container">
+       <button class="loginbutton" onclick="loginWithGoogle()">
+         <img src="./images/googlesignin.png" alt="Signin">
+       </button>
 
+      </div>
+    </div>
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
 
-    <p id="load">Firebase SDK Loading&hellip;</p>
+    <p id="load"></p>
     <script id="main-body" type="text/template">
       <div class ="jumbotron">
          Hello World
