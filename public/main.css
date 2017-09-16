@@ -1,5 +1,12 @@
 body {
+   box-sizing: border-box;
+   margin: 0;
+   font-family: 'Raleway', sans-serif;
+}
+
+.login-background {
     background-color: #302e3e;
+
 }
 
 .logo-container {
@@ -35,4 +42,85 @@ body {
     -webkit-box-shadow: inset 0 0 10px #000000;
     box-shadow:         inset 0 0 10px #000000;
     cursor: pointer;
+}
+
+.main {
+    height: 50vh;
+    background-color: #b976f9;
+}
+.application {
+    background-color: #302e3e;
+    height: 50vh;
+}
+
+.heading p {
+    margin: 0;
+    text-align: center;
+    padding-top: 30px;
+    color: white
+}
+
+.image-container img {
+    display: block;
+    margin: 20px auto;
+    border: 1px solid darkgray;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+
+}
+
+.personal-info .name {
+    text-align: center;
+    padding: 5px;
+    color: white;
+}
+
+.custom-btn {
+    background: #b976f9;
+    border: 1px solid #b976f9;
+    cursor: pointer;
+    font-size: .875rem;
+    font-weight: 200;
+    line-height: 1.875rem;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    transition: background .3s ease-out;
+    border-radius: 2px;
+    min-height: 32px;
+    min-width: 32px;
+    outline: 0;
+    padding: 0 30px;
+    display: block;
+    margin: 0 auto;
+    color: white;
+}
+
+.upload-button {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    top: 150px;
+
+}
+
+.custom-btn::before {
+    -webkit-transition: .5s all ease;
+    transition: .5s all ease;
+    left: 50%;
+    right: 50%;
+    opacity: 0;
+    width: 0;
+    background-color: #fff;
+    z-index: -2;
+    cursor: pointer;
+
+}
+
+.custom-btn::before, .custom-btn:hover::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    content: '';
 }
