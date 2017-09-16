@@ -27,4 +27,15 @@ var template= [];
 //     console.log(template);
 // }
 //loadMoreRequest();
-var database = firebase.database();
+
+
+function getData() {
+    var database = firebase.database();
+
+    return firebase.database().ref('Hello').on('value', function(snapshot) {
+
+        console.log(snapshot.val().Key);
+    });
+}
+
+getData();
