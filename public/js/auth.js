@@ -1,64 +1,82 @@
 /**
  * Created by aayusharora on 9/12/17.
  */
-var provider = new firebase.auth.GoogleAuthProvider();
-provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
-var user = localStorage.getItem('user') || [];
+(function() {
+    'use strict';
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
-if(user.length) {
-    window.location = "tree.html";
+    var app  = {};
 
-}
+    app.checklocalStorage = function () {
+        var user = localStorage.getItem('user') || [];
 
+        if(user.length) {
+            window.location = "tree.html";
 
+        }
+    };
 
-function loginWithGoogle() {
+    app.checklocalStorage();
+
+    app.setlocalStorage = function (token, user) {
+        localStorage.setItem("token", JSON.stringify(token));
+        localStorage.setItem("user", JSON.stringify(user));
+    };
+
+    app.setLocation = function (location) {
+        window.location = location;
+    };
+
+    app.loginUser = function () {
 
         firebase.auth().signInWithPopup(provider).then(function(result) {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            let token = result.credential.accessToken;
-            let user = result.user;
+            var token = result.credential.accessToken;
+            var user = result.user;
 
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
-                    // User is signed in.
-                    localStorage.setItem("token", JSON.stringify(token));
-                    localStorage.setItem("user", JSON.stringify(user));
-
+                   app.setlocalStorage(token, user);
                 }
             });
 
-            window.location = 'tree.html';
+            app.setLocation('tree.html');
 
         }).catch(function(error) {
 
-            window.location = 'index.html';
+            app.setLocation('index.html');
 
             if(error.code) {
                 return errorCode;
             }
-            else if (error.message) {
-                return error.message;
-            }
-            else if (error.email) {
-                return email;
-            }
-            else {
-                return error.credential;
-            }
-
         });
+    };
+
+    app.logoutUser = function () {
+        firebase.auth().signOut().then(function() {
+            console.log("signout");
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+        }).catch(function(error) {
+            // An error happened.
+        });
+    }
+    window.app = app;
+})();
+
+
+
+
+
+
+
+function loginWithGoogle() {
+    app.loginUser();
 }
 
 function logoutWithGoogle() {
-    firebase.auth().signOut().then(function() {
-        console.log("signout");
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-    }).catch(function(error) {
-    // An error happened.
-    });
+   app.logoutUser();
 }
 
 
