@@ -21,8 +21,8 @@
     app.checklocalStorage();
 
     app.setlocalStorage = function (token, user) {
-        localStorage.setItem("token", JSON.stringify(token));
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", user);
     };
 
     app.setLocation = function (location) {
@@ -37,7 +37,8 @@
 
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
-                   app.setlocalStorage(token, user);
+                    console.log(JSON.stringify(user));
+                   app.setlocalStorage(token, JSON.stringify(user))
                 }
             });
 
@@ -61,14 +62,9 @@
         }).catch(function(error) {
             // An error happened.
         });
-    }
+    };
     window.app = app;
 })();
-
-
-
-
-
 
 
 function loginWithGoogle() {
